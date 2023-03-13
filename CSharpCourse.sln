@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1401
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpCourse", "CSharpCourse\CSharpCourse.csproj", "{3686F878-1AA2-4810-93A8-A847CA4C8EF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpCourse", "CSharpCourse\CSharpCourse.csproj", "{3686F878-1AA2-4810-93A8-A847CA4C8EF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{B67AADA2-978C-47DF-885B-0CEE07206F4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{3686F878-1AA2-4810-93A8-A847CA4C8EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3686F878-1AA2-4810-93A8-A847CA4C8EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3686F878-1AA2-4810-93A8-A847CA4C8EF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B67AADA2-978C-47DF-885B-0CEE07206F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B67AADA2-978C-47DF-885B-0CEE07206F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B67AADA2-978C-47DF-885B-0CEE07206F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B67AADA2-978C-47DF-885B-0CEE07206F4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
