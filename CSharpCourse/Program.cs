@@ -2,6 +2,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Office.Interop.Excel;
+using System.Diagnostics;
 
 namespace CSharpCourse
 {
@@ -9,6 +10,13 @@ namespace CSharpCourse
     {
         static void Main(string[] args)
         {
+            Debug.WriteLine("Starting Application!");
+
+            if (!EventLog.SourceExists("My app"))
+                EventLog.CreateEventSource("My app", "Application");
+
+            EventLog.WriteEntry("My app", "My message");
+
             Console.WriteLine("Hello World!");
 
             // Используя var и оператор new, можем не указывать тип слева 
