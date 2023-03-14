@@ -10,6 +10,7 @@
         <Button x:Name="btnClick" Content="Поприветствовать" HorizontalAlignment="Left" Margin="467,13,0,0" VerticalAlignment="Top" Width="118" Click="BtnClick_Click"/>
         <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" Text="Введите ваше имя!"/>
         <Label x:Name="labelResult" Content="Здесь будет приветствие!" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.855,-2.962" Width="242"/>
+        <Button x:Name="btnClick1" Content="Click me!" HorizontalAlignment="Left" Margin="467,52,0,0" VerticalAlignment="Top" Width="118" Click="BtnClick1_Click"/>
 
     </Grid>
 </Window>

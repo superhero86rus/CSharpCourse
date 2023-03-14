@@ -30,5 +30,14 @@ namespace WpfApp1
             string result = string.Format("Привет, {0}!", txtName.Text);
             labelResult.Content = result;
         }
+
+        private void BtnClick1_Click(object sender, RoutedEventArgs e)
+        {
+            long sum = 0;
+            for (int i = 1; i <= 1000000000; i++)
+                sum += i;
+
+            labelResult.Content = sum.ToString();
+        }
     }
 }
