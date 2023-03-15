@@ -130,16 +130,39 @@ namespace CSharpCourse
         // Класс - reference type
         struct Money
         {
-            public decimal Summa;
-            public string Currency;
+            private decimal summa;
+            // Property
+            public decimal Summa
+            {
+                get { return summa; }
+                set { this.summa = value; }
+
+            }
+
+            // Автоматический Property. Это тоже самое, что выше. Используется, когда логики нет
+            // public decimal Summa { get; set; }
+
+            public string Currency { get; set; }
+
+
 
             // Не обязательный Конструктор
             // Все поля структуры Обязательно должны быть проинициализированы
             
             public Money(decimal Summa, string Currency)
             {
-                this.Summa = Summa;
+                this.summa = Summa;
                 this.Currency = Currency;
+            }
+
+            public decimal getProcent()
+            {
+                return Summa * 0.13M; // M - дробное число типа decimal
+            }
+
+            public void setProcent(decimal procent)
+            {
+                this.Summa = this.Summa / procent;
             }
 
             public void Show() => Console.WriteLine(Summa + " " + Currency);
@@ -155,10 +178,13 @@ namespace CSharpCourse
             Console.WriteLine("Color int value: " + k);
 
             // Структура
-            Money m1;
+            Money m1 = new Money(100, "рублей");
 
+            /*
             m1.Summa = 100;
             m1.Currency = "рублей";
+            m1.Procent = 0.13M;
+            */
 
             Money m2 = m1; // Скопировали структуру. Структура m2 не зависит от m1 и не изменяет его
             m1.Currency = "долларов";
@@ -169,6 +195,9 @@ namespace CSharpCourse
             // Инициализация с вызовом конструктора
             Money m3 = new Money(200, "USD");
             m3.Show();
+
+            m1.setProcent(m1.getProcent() + 0.01M);
+            Console.WriteLine("m1 Procent = " + m1.getProcent());
         }
         
     }
