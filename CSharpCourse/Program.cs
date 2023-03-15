@@ -287,26 +287,33 @@ namespace CSharpCourse
         }
 
         // Переменная типа делегат содержит ссылку на метод, который ничего не возвращает и не имеет входные параметры
-        public delegate void Electricity(); 
+        public delegate void Electricity(object sender, EventArgs args); 
         
         class Switcher
         {
             // Модификатор event запрещает вызвать метод измне, а только как метод данного класса
             public event Electricity ElectricityOn;
 
+            // Best practice - защищенный виртуальный метод
+            protected virtual void OnElectricity()
+            {
+                ElectricityOn?.Invoke(this, new EventArgs());
+            }
+
             public void switchOn()
             {
                 Console.WriteLine("Выключатель включен!");
                 // if(ElectricityOn != null) ElectricityOn();
                 // ElectricityOn.Invoke();
+                // ElectricityOn?.Invoke(this, new EventArgs()); // Если не null, вызываем метод Invoke
 
-                ElectricityOn?.Invoke(); // Если не null, вызываем метод Invoke
+                OnElectricity();
             }
         }
 
         class Lamp
         {
-            public void LightOn()
+            public void LightOn(object sender, EventArgs args)
             {
                 Console.WriteLine("Лампа зажглась!");
             }
@@ -314,7 +321,7 @@ namespace CSharpCourse
 
         class TVSet
         {
-            public void TvOn()
+            public void TvOn(object sender, EventArgs args)
             {
                 Console.WriteLine("Телевизор включен!");
             }

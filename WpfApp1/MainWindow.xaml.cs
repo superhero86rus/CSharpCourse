@@ -23,8 +23,17 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+
+            this.btnClick.Click += BtnClick_Click1;
         }
 
+        // Дополнительное событие
+        private void BtnClick_Click1(object sender, RoutedEventArgs e)
+        {
+            System.Windows.MessageBox.Show("Ты нажал на кнопку!");
+        }
+
+        // Основное событие кнопки
         private void BtnClick_Click(object sender, RoutedEventArgs e)
         {
             string result = string.Format("Привет, {0}!", txtName.Text);
