@@ -17,8 +17,9 @@ namespace CSharpCourse
             // Basic();
             // EnumStruct();
             // Collections();
+            // Delegates();
 
-            Delegates();
+            Classes();
 
             Console.ReadKey();
         }
@@ -339,6 +340,43 @@ namespace CSharpCourse
             sw.ElectricityOn += tv.TvOn;
 
             sw.switchOn();
+        }
+
+        // Абстрактный класс
+        public abstract class Person
+        {
+            public string Name;
+            public int Age;
+
+            public Person(string Name = "Незнакомец", int Age = 18)
+            {
+                this.Name = Name;
+                this.Age = Age;
+            }
+        }
+
+        // Потомок
+        public class Employee : Person
+        {
+            public string Position;
+
+            public Employee(string Name, int Age, string Position) : base(Name, Age) // Вызываем конструктор базового класса
+            {
+                // Чтобы вызвать реализацию родителя можно обратиться base.Name, в случае если мы переобпределили в наследнике метод/параметр
+                this.Position = Position;
+                Show();
+            }
+
+            public void Show()
+            {
+                Console.WriteLine(this.Position + " " + this.Name + " " + this.Age);
+            }
+        }
+
+        // Классы и объекты
+        public static void Classes()
+        {
+            Person p = new Employee("Сергей", 43, "Преподаватель");
         }
     }
 }
