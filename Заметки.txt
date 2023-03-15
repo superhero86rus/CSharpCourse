@@ -27,3 +27,18 @@ protected - доступ для этого типа и его наследник
 C# v8 (комбинации)
 protected internal - вне наследники + все классы этой сборки
 private protected - только те наследники, которые в этой сборке
+
+Коллекции
+ArrayList - динамический массив
+BitArray
+Hashtable
+Queue - FIFO очередь
+SortedList
+Stack
+StringCollection
+
+LINQ
+var drinks =
+	from string drink in prices.Keys
+	orderedby prices[drink] ascending
+	select drink;

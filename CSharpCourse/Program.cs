@@ -4,21 +4,25 @@ using System.Text.RegularExpressions;
 using Microsoft.Office.Interop.Excel;
 using System.Diagnostics;
 
+using System.Collections; // Нетипизированные коллекции
+using System.Collections.Generic; // Типизированные коллекции
+using System.Collections.Specialized; // Частично типизированные коллекции
+
 namespace CSharpCourse
 {
     class Program
     {
         static void Main(string[] args)
         {
-            // Day1();
-
-            Day2();
+            // Basic();
+            // EnumStruct();
+            Collections();
 
             Console.ReadKey();
         }
 
         // Тесты первого дня
-        public static void Day1()
+        public static void Basic()
         {
             Debug.WriteLine("Starting Application!");
 
@@ -219,8 +223,8 @@ namespace CSharpCourse
             }
         }
 
-        // Тесты второго дня
-        public static void Day2()
+        // Тесты второго дня - перечисления, структуры, свойства
+        public static void EnumStruct()
         {
             Colors c = Colors.Green;
 
@@ -266,6 +270,18 @@ namespace CSharpCourse
 
             Console.WriteLine(c1.X + " : " + c1.Y);
         }
-        
+
+        // Коллекции
+        public static void Collections()
+        {
+            // Программирование от интерфейсов
+            // Принцип, когда переменные или агрументы указываются на основе интерфейса, а не класса
+            IList<String> names = new List<String>();
+            names.Add("First");
+            names.Add("Second");
+            names.Add("Third");
+
+            foreach (String item in names) Console.WriteLine(item);
+        }
     }
 }
