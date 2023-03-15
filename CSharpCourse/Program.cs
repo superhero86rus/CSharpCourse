@@ -10,6 +10,16 @@ namespace CSharpCourse
     {
         static void Main(string[] args)
         {
+            // Day1();
+
+            Day2();
+
+            Console.ReadKey();
+        }
+
+        // Тесты первого дня
+        public static void Day1()
+        {
             Debug.WriteLine("Starting Application!");
 
             if (!EventLog.SourceExists("My app"))
@@ -71,7 +81,7 @@ namespace CSharpCourse
 
             // Оператор ??
             string w = "Сергей";
-            Console.WriteLine( ((w==null) ? "" : w ).ToUpper() );
+            Console.WriteLine(((w == null) ? "" : w).ToUpper());
             Console.WriteLine((w ?? "").ToUpper());
 
             // nullable тип, т.е. переменная может быть как int, так и null
@@ -104,18 +114,62 @@ namespace CSharpCourse
 
             Console.WriteLine(x1 + " | " + x2); // 11 | 23
 
-            Console.ReadKey();
+            // Вспомогательные функции
+            // Два вида описания функции
+            void testValue(int x) => x = 12;
+
+            void testRef(ref int x)
+            {
+                x = 23;
+            }
         }
 
-        public static void testValue(int x)
+        enum Colors { Red, Green, Blue }
+
+        // Структура - value type
+        // Класс - reference type
+        struct Money
         {
-            x = 12;
+            public decimal Summa;
+            public string Currency;
+
+            // Не обязательный Конструктор
+            // Все поля структуры Обязательно должны быть проинициализированы
+            
+            public Money(decimal Summa, string Currency)
+            {
+                this.Summa = Summa;
+                this.Currency = Currency;
+            }
+
+            public void Show() => Console.WriteLine(Summa + " " + Currency);
         }
 
-        public static void testRef(ref int x)
+        // Тесты второго дня
+        public static void Day2()
         {
-            x = 23;
-        }
+            Colors c = Colors.Green;
 
+            int k = (int)c;
+
+            Console.WriteLine("Color int value: " + k);
+
+            // Структура
+            Money m1;
+
+            m1.Summa = 100;
+            m1.Currency = "рублей";
+
+            Money m2 = m1; // Скопировали структуру. Структура m2 не зависит от m1 и не изменяет его
+            m1.Currency = "долларов";
+
+            m1.Show();
+            m2.Show();
+
+            // Инициализация с вызовом конструктора
+            Money m3 = new Money(200, "USD");
+            m3.Show();
+        }
+        
     }
 }
