@@ -144,8 +144,6 @@ namespace CSharpCourse
 
             public string Currency { get; set; }
 
-
-
             // Не обязательный Конструктор
             // Все поля структуры Обязательно должны быть проинициализированы
             
@@ -166,6 +164,59 @@ namespace CSharpCourse
             }
 
             public void Show() => Console.WriteLine(Summa + " " + Currency);
+        }
+
+        // Использование индексирующего Property
+        struct Coords
+        {
+            public int X;
+            public int Y;
+
+            // Стандарт
+            public int this[int index]
+            {
+                get
+                {
+                    switch (index)
+                    {
+                        case 0: return X;
+                        case 1: return Y;
+                        default: throw new IndexOutOfRangeException();
+                    }
+                }
+                set
+                {
+                    switch (index)
+                    {
+                        case 0: X = value; break;
+                        case 1: Y = value; break;
+                        default: throw new IndexOutOfRangeException();
+                    }
+                }
+            }
+
+            // Строковое индексирующее Property
+            public int this[string index]
+            {
+                get
+                {
+                    switch (char.ToUpper(index[0]))
+                    {
+                        case 'X': return X;
+                        case 'Y': return Y;
+                        default: throw new IndexOutOfRangeException();
+                    }
+                }
+                set
+                {
+                    switch (char.ToUpper(index[0]))
+                    {
+                        case 'X': X = value; break;
+                        case 'Y': Y = value; break;
+                        default: throw new IndexOutOfRangeException();
+                    }
+                }
+            }
         }
 
         // Тесты второго дня
@@ -198,6 +249,22 @@ namespace CSharpCourse
 
             m1.setProcent(m1.getProcent() + 0.01M);
             Console.WriteLine("m1 Procent = " + m1.getProcent());
+
+            Coords c1;
+            c1.X = 100;
+            c1.Y = 150;
+
+            Console.WriteLine(c1.X + " : " + c1.Y);
+
+            c1[0] = 200;
+            c1[1] = 300;
+
+            Console.WriteLine(c1.X + " : " + c1.Y);
+
+            c1["X"] = 250;
+            c1["Y"] = 350;
+
+            Console.WriteLine(c1.X + " : " + c1.Y);
         }
         
     }
