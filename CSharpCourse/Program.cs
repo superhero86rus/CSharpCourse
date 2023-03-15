@@ -16,7 +16,9 @@ namespace CSharpCourse
         {
             // Basic();
             // EnumStruct();
-            Collections();
+            // Collections();
+
+            Delegates();
 
             Console.ReadKey();
         }
@@ -282,6 +284,54 @@ namespace CSharpCourse
             names.Add("Third");
 
             foreach (String item in names) Console.WriteLine(item);
+        }
+
+        // Переменная типа делегат содержит ссылку на метод, который ничего не возвращает и не имеет входные параметры
+        public delegate void Electricity(); 
+        
+        class Switcher
+        {
+            // Модификатор event запрещает вызвать метод измне, а только как метод данного класса
+            public event Electricity ElectricityOn;
+
+            public void switchOn()
+            {
+                Console.WriteLine("Выключатель включен!");
+                // if(ElectricityOn != null) ElectricityOn();
+                // ElectricityOn.Invoke();
+
+                ElectricityOn?.Invoke(); // Если не null, вызываем метод Invoke
+            }
+        }
+
+        class Lamp
+        {
+            public void LightOn()
+            {
+                Console.WriteLine("Лампа зажглась!");
+            }
+        }
+
+        class TVSet
+        {
+            public void TvOn()
+            {
+                Console.WriteLine("Телевизор включен!");
+            }
+        }
+
+        // Делегат
+        public static void Delegates()
+        {
+            Switcher sw = new Switcher();
+            Lamp lamp = new Lamp();
+            TVSet tv = new TVSet();
+
+            // Подписка на событие
+            sw.ElectricityOn += lamp.LightOn;
+            sw.ElectricityOn += tv.TvOn;
+
+            sw.switchOn();
         }
     }
 }

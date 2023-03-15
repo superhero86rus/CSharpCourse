@@ -42,3 +42,5 @@ var drinks =
 	from string drink in prices.Keys
 	orderedby prices[drink] ascending
 	select drink;
+
+Делегат - обьект содержащий набор ссылок на определенные методы
