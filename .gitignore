@@ -4,3 +4,8 @@ CSharpCourse/.vs
 .vs
 WpfApp1/bin
 WpfApp1/obj
+ConsoleApp1/bin
+ConsoleApp1/obj
+packages
+TestConsoleApp1/bin
+TestConsoleApp1/obj

@@ -7,7 +7,6 @@ using System.Diagnostics;
 using System.Collections; // Нетипизированные коллекции
 using System.Collections.Generic; // Типизированные коллекции
 using System.Collections.Specialized; // Частично типизированные коллекции
-using System.IO.IsolatedStorage;
 
 namespace CSharpCourse
 {
