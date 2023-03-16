@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Collections; // Нетипизированные коллекции
 using System.Collections.Generic; // Типизированные коллекции
 using System.Collections.Specialized; // Частично типизированные коллекции
+using System.IO.IsolatedStorage;
 
 namespace CSharpCourse
 {
@@ -356,18 +357,41 @@ namespace CSharpCourse
         }
 
         // Потомок
-        public class Employee : Person
+        public class Employee : Person, IDisposable
         {
             public string Position;
+
+            private bool isDisposed;
 
             public Employee(string Name, int Age, string Position) : base(Name, Age) // Вызываем конструктор базового класса
             {
                 // Чтобы вызвать реализацию родителя можно обратиться base.Name, в случае если мы переобпределили в наследнике метод/параметр
                 this.Position = Position;
                 Show();
+
+                Console.WriteLine("Создано соединение...");
+                this.isDisposed = false;
             }
 
-            public void Show()
+            // Деструктор
+            // Объект в dotNet уничтожается сборщиком мусора на основе остутствия ссылок на объект в контексте работы программы
+            /*
+            ~Employee()
+            {
+
+            }
+            */
+
+            // Лучший вариант использования деструктора, это унаследоваться от IDisposable и реализовать метод Dispose
+            public void Dispose()
+            {
+                if (!isDisposed) {
+                    Console.WriteLine("Освобождение соединения...");
+                    this.isDisposed = !this.isDisposed;
+                }
+            }
+
+            private void Show()
             {
                 Console.WriteLine(this.Position + " " + this.Name + " " + this.Age);
             }
@@ -376,7 +400,26 @@ namespace CSharpCourse
         // Классы и объекты
         public static void Classes()
         {
-            Person p = new Employee("Сергей", 43, "Преподаватель");
+            /*
+            Employee p = new Employee("Сергей", 43, "Преподаватель");
+
+            try
+            {
+                // Работа с disposable обхектом
+            }
+            finally
+            {
+                // Гарантированное освобождение из finally, даже если будет catch exception
+                p.Dispose();
+            }
+            */
+
+            // На выходе, будет вызов Dispose автоматически
+            using(Employee p = new Employee("Сергей", 43, "Преподаватель"))
+            {
+
+            }
+            
         }
     }
 }
