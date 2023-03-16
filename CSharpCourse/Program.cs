@@ -371,16 +371,17 @@ namespace CSharpCourse
 
                 Console.WriteLine("Создано соединение...");
                 this.isDisposed = false;
+
+                // Отмена вызова деструктора
+                GC.SuppressFinalize(this);
             }
 
             // Деструктор
             // Объект в dotNet уничтожается сборщиком мусора на основе остутствия ссылок на объект в контексте работы программы
-            /*
             ~Employee()
             {
-
+                Dispose();
             }
-            */
 
             // Лучший вариант использования деструктора, это унаследоваться от IDisposable и реализовать метод Dispose
             public void Dispose()
@@ -414,12 +415,16 @@ namespace CSharpCourse
             }
             */
 
-            // На выходе, будет вызов Dispose автоматически
+            // При использовании using, на выходе будет вызов Dispose автоматически
+            /*
             using(Employee p = new Employee("Сергей", 43, "Преподаватель"))
             {
 
             }
-            
+            */
+
+            Employee p = new Employee("Сергей", 43, "Преподаватель");
+
         }
     }
 }
