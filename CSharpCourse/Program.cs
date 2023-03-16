@@ -19,7 +19,8 @@ namespace CSharpCourse
             // EnumStruct();
             // Collections();
             // Delegates();
-            ClassesConstructorDestructor();
+            //ClassesConstructorDestructor();
+            StaticClasses();
 
             Console.ReadKey();
         }
@@ -424,6 +425,30 @@ namespace CSharpCourse
 
             Employee p = new Employee("Сергей", 43, "Преподаватель");
             p.ShowName(); // partial метод из модуля Employee.cs
+        }
+        
+        // Статический класс, который переводит первую букву слова в верхний регистр
+        public static class StringExt
+        {
+            public static string Capitalize(string s)
+            {
+                string[] words = s.Split(' ');
+                StringBuilder sb = new StringBuilder();
+
+                foreach (string w in words)
+                {
+                    if (w.Length > 0)
+                        sb.Append(char.ToUpper(w[0])).Append(w.Substring(1)).Append(' ');
+                }
+
+                return sb.ToString();
+            }
+        }
+
+        public static void StaticClasses()
+        {
+            string s = StringExt.Capitalize("hello sergey!");
+            Console.WriteLine(s);
         }
     }
 }
