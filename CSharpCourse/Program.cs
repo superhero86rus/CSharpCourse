@@ -11,7 +11,7 @@ using System.IO.IsolatedStorage;
 
 namespace CSharpCourse
 {
-    class Program
+    public partial class Program
     {
         static void Main(string[] args)
         {
@@ -19,8 +19,7 @@ namespace CSharpCourse
             // EnumStruct();
             // Collections();
             // Delegates();
-
-            Classes();
+            ClassesConstructorDestructor();
 
             Console.ReadKey();
         }
@@ -356,8 +355,8 @@ namespace CSharpCourse
             }
         }
 
-        // Потомок
-        public class Employee : Person, IDisposable
+        // Потомок (partial - описание класса размазано по разным модулям)
+        public partial class Employee : Person, IDisposable
         {
             public string Position;
 
@@ -399,7 +398,7 @@ namespace CSharpCourse
         }
 
         // Классы и объекты
-        public static void Classes()
+        public static void ClassesConstructorDestructor()
         {
             /*
             Employee p = new Employee("Сергей", 43, "Преподаватель");
@@ -424,7 +423,7 @@ namespace CSharpCourse
             */
 
             Employee p = new Employee("Сергей", 43, "Преподаватель");
-
+            p.ShowName(); // partial метод из модуля Employee.cs
         }
     }
 }
