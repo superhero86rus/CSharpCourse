@@ -32,14 +32,71 @@ namespace CSharpCourse
 
     public partial class Program
     {
+        // Enumerator
+        class MyE : IEnumerator<int>
+        {
+            private int k = 0;
+
+            public int Current => k;
+            /*
+            // Что эквивалентно
+            public int Current
+            {
+                get { return k; }
+            }
+            */
+
+            object IEnumerator.Current => k;
+
+            public void Dispose()
+            {
+                //throw new NotImplementedException();
+            }
+
+            public bool MoveNext()
+            {
+                switch (k)
+                {
+                    case 0: k = 100; return true;
+                    case 200: k = 200; return true;
+                    case 300: k = 300; return true;
+                    default: return false;
+                }
+            }
+
+            public void Reset()
+            {
+                k = 0;
+            }
+        }
+
+        class MyI : IEnumerable<int>
+        {
+            public IEnumerator<int> GetEnumerator()
+            {
+                return new MyE();
+            }
+
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return new MyE();
+            }
+        }
+
+        public static IEnumerable<int> GetInts3()
+        {
+            return new MyI();
+        }
+
         static void Main(string[] args)
         {
             // Basic();
             // EnumStruct();
             // Collections();
             // Delegates();
-            //ClassesConstructorDestructor();
-            StaticClasses();
+            // ClassesConstructorDestructor();
+            // StaticClasses();
+            Enumeration();
 
             Console.ReadKey();
         }
@@ -451,6 +508,32 @@ namespace CSharpCourse
             string s = "hello sergey!";
             string s1 = s.Capitalize();
             Console.WriteLine(s + " = " + s1);
+        }
+
+        // IEnumerable. Смысл интерфейса - нечто абстрактное, что позволяет перебирать данные
+        public static void Enumeration()
+        {
+            IEnumerable<int> GetInts()
+            {
+                return new List<int>() { 100, 200, 300 };
+            }
+
+            IEnumerable<int> GetInts2()
+            {
+                for (int i = 1; i <= 3; i++) yield return i*101;
+            }
+
+            var list1 = GetInts();
+            var list2 = GetInts2();
+
+            Console.WriteLine("List1:\n");
+            foreach (var i in GetInts()) Console.WriteLine(i);
+            Console.WriteLine("\nList2:\n");
+            foreach (var j in list2) Console.WriteLine(j);
+
+            var list3 = Program.GetInts3();
+            Console.WriteLine("\nList3:\n");
+            foreach (var k in list3) Console.WriteLine(k);
         }
     }
 }
