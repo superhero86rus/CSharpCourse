@@ -64,3 +64,23 @@ IComparer - внешняя сущность по отношению к срав�
 IEnumerable добавляет возможность использовать foreach, либо нужно реализовывать публичный метод GetEnumberator,
 который возвращает IEnumerator<T>
 
+Дженерики <T>
+public class CustomList<T>
+{
+	public T this[int index] {get; set; }
+	public void Add(T item) { ... }
+	public void Remove(T item) {... }
+}
+
+Ограничения дженериков (указываются после угловых скобок):
+where T: <name of interface>
+where T: <name of base class>
+where T: U - типизация указанным типом или любым из его наследников
+where T: new() - есть дефолтный конструктор
+where T: struct
+where T: class
+
+public class CustomList<T> where T: IBeverager, IComparable<T>, new()
+{
+
+}
