@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.DAL
 {
-    public interface IRepository
+    public interface IDBContext
     {
-        IList<Student> GetStudentsByAge(int minAge);
-        IList<Student> GetStudentsByName(string name);
+        IEnumerable<Student> AllStudents { get; }
     }
 }

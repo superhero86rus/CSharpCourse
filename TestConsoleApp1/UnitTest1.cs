@@ -7,6 +7,15 @@ namespace TestConsoleApp1
     [TestClass]
     public class TestStringExt
     {
+        /*
+        // Специальные атрибуты для тестирования
+        [TestInitialize]
+        [TestCleanup]
+
+        [ClassInitialize]
+        [ClassCleanup]
+        */
+
         [TestMethod]
         public void TestCapitalize()
         {

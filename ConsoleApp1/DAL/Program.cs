@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApp1.DAL;
 
 namespace ConsoleApp1
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
 
+        }
+
+        public static IList<Student> Sorted(IRepository r, string Name)
+        {
+            return (
+                from s in r.GetStudentsByName(Name)
+                orderby s.LastName
+                select s).ToList();
         }
     }
 
