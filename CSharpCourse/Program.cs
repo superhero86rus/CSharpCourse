@@ -96,7 +96,9 @@ namespace CSharpCourse
             // Delegates();
             // ClassesConstructorDestructor();
             // StaticClasses();
-            Enumeration();
+            // Enumeration();
+
+            Inheritance();
 
             Console.ReadKey();
         }
@@ -534,6 +536,12 @@ namespace CSharpCourse
             var list3 = Program.GetInts3();
             Console.WriteLine("\nList3:\n");
             foreach (var k in list3) Console.WriteLine(k);
+        }
+
+        // Наследование
+        public static void Inheritance()
+        {
+
         }
     }
 }
