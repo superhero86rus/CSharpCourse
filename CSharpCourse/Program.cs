@@ -8,6 +8,8 @@ using System.Collections; // Нетипизированные коллекции
 using System.Collections.Generic; // Типизированные коллекции
 using System.Collections.Specialized; // Частично типизированные коллекции
 
+using Newtonsoft.Json;
+
 namespace CSharpCourse
 {
     // Статический класс, который переводит первую букву слова в верхний регистр
@@ -98,7 +100,7 @@ namespace CSharpCourse
             // StaticClasses();
             // Enumeration();
 
-            Inheritance();
+            FileSystem();
 
             Console.ReadKey();
         }
@@ -538,10 +540,27 @@ namespace CSharpCourse
             foreach (var k in list3) Console.WriteLine(k);
         }
 
-        // Наследование
-        public static void Inheritance()
+        private class User
         {
+            public int Id;
+            public string Name;
+            public string Login;
+        }
 
+        // Работа с файлами. Сериализиция. Десериализация
+        public static void FileSystem()
+        {
+            // Каталог с исполняемым файлом текущего приложения
+            Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
+
+            User user = new User();
+            user.Id = 1;
+            user.Name = "Alexandr";
+            user.Login = "gpbu13053";
+
+            var strUser = JsonConvert.SerializeObject(user);
+
+            Console.WriteLine("Сериализованный класс: " + strUser);
         }
     }
 }
